@@ -28,8 +28,39 @@ public class IntArrayWorker
      return count;
   }
   
+  /**
+   * getLargest - a.4 question 2
+   */
+  public int getLargest()
+  {
+    int max = matrix[0][0];
+    for (int row = 0; row < matrix.length; row++)
+    {
+      for (int col = 0; col < matrix[row].length; col++)
+      {
+        if(matrix[row][col] > max)
+        max = matrix[row][col];
+      }
+    }
+    
+    return max;
+    
+   }
   
-  
+   /**
+    * getColTotal - a.4 question 3
+    */
+   public int getColTotal(int n)
+   {
+    int sum = 0;
+    for (int row = 0; row < matrix.length; row++)
+    
+      sum += matrix[row][n];
+    
+    return sum;
+    
+   }
+   
   /**
    * Method to return the total 
    * @return the total of the values in the array
