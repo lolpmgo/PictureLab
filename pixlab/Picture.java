@@ -242,7 +242,7 @@ public class Picture extends SimplePicture
     } 
   }
   
-    /**Method that mirrors horizontal from bottom to top*/
+  /** Method that mirrors horizontal from bottom to top */
   public void mirrorHorizontalBotToTop()
   { Pixel[][] pixels = this.getPixels2D();
     Pixel topPixel = null;
@@ -256,6 +256,26 @@ public class Picture extends SimplePicture
         bottomPixel = pixels[pixels.length-row-1][col];
         topPixel.setColor(bottomPixel.getColor());
       }
+    } 
+  }
+  
+  /** Method that mirrors diagonally */
+  public void mirrorDiagonal()
+  { Pixel[][] pixels = this.getPixels2D();
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int max = pixels.length;
+    if (pixels[0].length < max)
+    max = pixels[0].length;
+    for(int row = 1; row<max; row++)
+    {
+        for (int col = 0; col < row; col++)
+        {
+            leftPixel = pixels[row][col];
+            rightPixel = pixels[col][row];
+            rightPixel.setColor(leftPixel.getColor());
+        }
+
     } 
   }
   
@@ -279,8 +299,17 @@ public class Picture extends SimplePicture
         rightPixel = pixels[row]                       
                          [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
+        count++;
       }
     }
+    System.out.println(count);
+  }
+  
+  /** Method to mirror arms */
+  public void mirrorArms()
+  {
+    
+    
   }
   
   /** copy from the passed fromPic to the
